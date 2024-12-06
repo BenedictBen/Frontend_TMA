@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="navbar-container"></div>
+        <!-- Search bar -->
+        <div class="search-container">
+            <input
+                type="text"
+                id="search-box"
+                placeholder="Search for products..."
+            />
+        </div>
+
+        <!-- Category Buttons -->
+    <div class="category-buttons">
+        <button class="filter-btn" data-category="All">Shop All</button>
+        <button class="filter-btn" data-category="Electronic">Electronics</button>
+        <button class="filter-btn" data-category="Fashion">Fashion</button>
+        <button class="filter-btn" data-category="Health">Health</button>
+    </div>
+    
+    <div class="shop-container">
+        <div class="product-grid" id="product-grid"></div>
+    </div>
+
+    <!-- <div id="cart">
+        <h2>Your Cart</h2>
+        <ul id="cart-items"></ul>
+        <p>Total: $<span id="total-price">0</span></p>
+      </div> -->
+    <div id="footer-container"></div>
+    <script src="shop.js" ></script>
+    <script src="index.js" ></script>
+</body>
+</html>

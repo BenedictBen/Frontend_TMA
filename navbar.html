@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navbar</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <!-- Desktop Header -->
+  <div class="header desktop-header">
+    <a href="/" class="logo">
+      <span class="logo-part" style="color: black; font-size: xx-large;">BEN</span>
+      <span class="logo-part blue" style="color: rgb(32, 73, 209);font-size: xx-large;">STORE</span>
+    </a>
+    <div class="desktop-nav">
+      <nav class="nav-links">
+        <a href="/" class="nav-link">HOME</a>
+        <a href="./shop.html" class="nav-link">SHOP</a>
+        <a href="./contact.html" class="nav-link">CONTACT</a>
+      </nav>
+      <div class="cart">
+        <a href="/cart.html" class="cart-link">
+          <i class="fa-solid fa-cart-shopping" style="color: black;"></i>
+          <div class="cart-badge blue">
+            <span class="cart-total">0</span> <!-- Cart item count will be updated here -->
+          </div>
+          
+        </a>
+      </div>
+      
+    </div>
+  </div>
+
+  <!-- Mobile Header -->
+
+<div class="header mobile-header">
+  <a href="/" class="mobile-logo">
+    <span class="logo-part">BEN</span>
+    <span class="logo-part blue">STORE</span>
+  </a>
+  <div class="mobile-menu">
+    <a href="/cart.html" class="mobile-cart">
+      <i class="fa-solid fa-cart-shopping" style="color: black;"></i>
+      <div class="cart-badge blue">
+        <span class="cart-total">0</span>
+      </div>
+    </a>
+    <button class="menu-toggle">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+    <div class="menu-modal hidden">
+      <ul>
+        <li><a href="/shop" class="menu-item">Shop</a></li>
+        <div class="menu-divider"></div>
+        <li><a href="/sign-in" class="menu-item">Sign In</a></li>
+        <div class="menu-divider"></div>
+        <li><a href="/sign-up" class="menu-item">Sign Up</a></li>
+      </ul>
+    </div>
+    
+  </div>
+</div>
+
+
+  <script>
+    
+    const hamMenu = document.querySelector(".ham-menu");
+
+const offScreenMenu = document.querySelector(".off-screen-menu");
+
+hamMenu.addEventListener("click", () => {
+  hamMenu.classList.toggle("active");
+  offScreenMenu.classList.toggle("active");
+});
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Function to update the cart badge on the navbar
+    function updateCartBadge() {
+        const cart = JSON.parse(localStorage.getItem('cart')) || []; // Retrieve cart from localStorage (default to empty array if not found)
+        const cartBadge = document.querySelectorAll('.cart-total'); // Select both desktop and mobile cart badge elements
+        
+        // Update each badge with the current cart length
+        cartBadge.forEach(badge => {
+            badge.textContent = cart.length;  // Set the cart badge count to the number of items in the cart
+        });
+    }
+
+    // Call the function to update the cart badge when the page loads
+    updateCartBadge();
+});
+
+
+
+  </script>
+  
+  <script src="index.js"></script>
+</body>
+</html>

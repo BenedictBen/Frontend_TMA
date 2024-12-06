@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Detail</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="navbar-container"></div>
+
+    <div class="product-detail-container">
+        <div class="product-detail">
+            <img id="product-image" src="" alt="Product Image" class="product-image">
+            <div class="product-info">
+                <h2 id="product-name"></h2>
+                <p id="product-price"></p>
+                <p id="product-category"></p>
+                <button id="add-to-cart-btn">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Get the product ID from the URL query parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = urlParams.get('id');  // Retrieve the 'id' parameter from the URL
+
+        const shop = [
+            { id: 1, name: "Wyze Cam v3 1080 Camera", price: 59, image: "./assets/images/cam1.jpg", category: "Electronic" },
+            { id: 2, name: "Playpen ball pool", price: 97, image: "./assets/images/pool1.jpg", category: "Health" },
+            { id: 3, name: "Cotton Checked Kat Dress sz", price: 25, image: "./assets/images/cotten_dress1.jpg", category: "Fashion" },
+            { id: 4, name: "Nivea Men 48 Hour Fresh Deodorant", price: 17, image: "./assets/images/deodorant1.jpg", category: "Health" },
+            { id: 5, name: "Amazon Echo 2nd generation", price: 20, image: "./assets/images/amazon1.jpg", category: "Electronic" },
+            { id: 6, name: "Woman High Heels", price: 39, image: "./assets/images/highheels1.jpg", category: "Fashion" },
+            { id: 7, name: "Dana Love's Baby Soft Body Mist", price: 28, image: "./assets/images/love1.jpg", category: "Health" },
+            { id: 8, name: "New Apple iPod Classic 7th Gen Black", price: 20, image: "./assets/images/ipod1.jpg", category: "Electronic" },
+            { id: 9, name: "Christmas Holiday Dress Girls", price: 12, image: "./assets/images/girls_dress1.jpg", category: "Fashion" },
+            { id: 10, name: "Abercrombie & Fitch Fierce", price: 49, image: "./assets/images/spray1.jpg", category: "Health" },
+            { id: 11, name: "Nike Runner 3 Athletic Sneakers", price: 78, image: "./assets/images/sneakers_girls1.jpg", category: "Fashion" },
+            { id: 12, name: "Sony ZV-1 20.1MP K Digital Camera", price: 674, image: "./assets/images/sony1.jpg", category: "Electronic" },
+        ];
+
+        // Find the product based on the ID
+        const product = shop.find(p => p.id == productId);
+
+        // If the product is found, display its details
+        if (product) {
+            document.getElementById('product-image').src = product.image;
+            document.getElementById('product-name').textContent = product.name;
+            document.getElementById('product-price').textContent = `$${product.price}`;
+            document.getElementById('product-category').textContent = `Category: ${product.category}`;
+        }
+
+        // Add to Cart functionality
+        document.getElementById('add-to-cart-btn').addEventListener('click', () => {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.push(product);  // Add the selected product to the cart
+            localStorage.setItem('cart', JSON.stringify(cart));  // Update localStorage
+
+            // Redirect to checkout page after adding to cart
+            window.location.href = "checkout.html";  // Change this URL to your actual checkout page URL
+        });
+    </script>
+    <div id="footer-container"></div>
+    <script src="index.js" ></script>
+
+</body>
+</html>
